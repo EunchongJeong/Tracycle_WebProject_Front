@@ -99,7 +99,7 @@
                  	checkId(){
                  		
                  		axios
-     		            .get('http://127.0.0.1:7788/user/checkUserId/'+this.userid)
+     		            .get('http://3.37.198.27:7788/user/checkUserId/'+this.userid)
      		            .then(response=>(this.useridcheck = response.data))
      		            .catch(error=>{
      		             	console.log(error);
@@ -110,7 +110,7 @@
                  
                  addUser(){
              		axios
- 						   .post('http://127.0.0.1:7788/user/addUser',
+ 						   .post('http://3.37.198.27:7788/user/addUser',
  						  {
  							userId: this.userid,
  							nickName: this.username,

@@ -188,7 +188,7 @@
 		
 		mounted(){
 			axios
-			.get('http://127.0.0.1:7788/board/getAllArea',{
+			.get('http://3.37.198.27:7788/board/getAllArea',{
  	  			headers : {
  	  				"jwt-auth-token":storage.getItem("jwt-auth-token")
  	  			}
@@ -201,7 +201,7 @@
 			})
 			.finally(()=>this.loading = false),
 			axios
-			.get('http://127.0.0.1:7788/board/getAllCategory',{
+			.get('http://3.37.198.27:7788/board/getAllCategory',{
  	  			headers : {
  	  				"jwt-auth-token":storage.getItem("jwt-auth-token")
  	  			}
@@ -298,7 +298,7 @@
 					for(var key of formData.entries()) {
 						console.log(key[0]+', '+key[1]);
 					}
-					axios.post('http://127.0.0.1:7788/board/writeBoard', formData,
+					axios.post('http://3.37.198.27:7788/board/writeBoard', formData,
 							{headers:{ 'Content-Type': 'multipart/form-data',
 								"jwt-auth-token":storage.getItem("jwt-auth-token")}})
 					.then(response=>{

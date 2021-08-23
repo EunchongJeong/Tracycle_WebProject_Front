@@ -73,7 +73,7 @@
         	<div class="post-entry">
 		    	<a :href=("board_detail.jsp?boardId="+board.boardId) class="mb-3 img-wrap">
 		       	<img class="list_image img-fluid" v-if="board.picture==null" src="../images/non-image.png" alt="Image placeholder">
-		       	<img class="list_image img-fluid" v-else :src=("http://127.0.0.1:7788/board/getFile/"+board.picture) alt="Image placeholder">
+		       	<img class="list_image img-fluid" v-else :src=("http://3.37.198.27:7788/board/getFile/"+board.picture) alt="Image placeholder">
 		       	</a>
 		       	<h3><a :href=("board_detail.jsp?boardId="+board.boardId)>{{board.title}}</a></h3>
 		       	<span class="date mb-4 d-block text-muted">{{board.date | formatDate}}<span :class="status_class[board.status]" v-text="status_list[board.status]"></span></span>
@@ -201,7 +201,7 @@
             mounted(){
             	offset=(this.currentPageIndex-1)*this.listRowCount;
         		axios
-            	.get('http://127.0.0.1:7788/board/getBoardLimitOffset/'+offset)
+            	.get('http://3.37.198.27:7788/board/getBoardLimitOffset/'+offset)
                .then(response=>{this.info = response.data;})
                .catch(error=>{
                    console.log(error);
@@ -210,7 +210,7 @@
                .finally(()=>this.loading = false),
                 
                 axios
-             	 .get('http://127.0.0.1:7788/board/getAllArea')
+             	 .get('http://3.37.198.27:7788/board/getAllArea')
                  .then(response=>(this.areaInfo = response.data))
                  .catch(error=>{
                     console.log(error);
@@ -219,7 +219,7 @@
                  .finally(()=>this.loading = false),
                                  
                 axios
-                 .get('http://127.0.0.1:7788/board/getAllCategory')
+                 .get('http://3.37.198.27:7788/board/getAllCategory')
                  .then(response=>(this.categoryInfo = response.data))
                  .catch(error=>{
                     console.log(error);
@@ -230,7 +230,7 @@
             methods:{
             	getBoard(){
             		axios
-            		.get('http://127.0.0.1:7788/board/getBoardTotalCount')
+            		.get('http://3.37.198.27:7788/board/getBoardTotalCount')
             			.then(response=>{this.totalListItemCount= response.data;
             			 this.initUI();
             			 })
@@ -242,7 +242,7 @@
             		
             		offset=(this.currentPageIndex-1)*this.listRowCount;
             		axios
-                	.get('http://127.0.0.1:7788/board/getBoardLimitOffset/'+offset)
+                	.get('http://3.37.198.27:7788/board/getBoardLimitOffset/'+offset)
                    .then(response=>{this.info = response.data;})
                    .catch(error=>{
                        console.log(error);
@@ -253,7 +253,7 @@
 
             	findByCategory(category){
             		axios
-            		.get('http://127.0.0.1:7788/board/findByCategoryTotalCount/'+this.category)
+            		.get('http://3.37.198.27:7788/board/findByCategoryTotalCount/'+this.category)
             			.then(response=>{this.totalListItemCount= response.data;
             			 this.initUI();
             			 })
@@ -265,7 +265,7 @@
 
             		offset=(this.currentPageIndex-1)*this.listRowCount;
             		axios
-        			.get('http://127.0.0.1:7788/board/findByCategoryLimitOffset/'+this.category+'/'+offset)
+        			.get('http://3.37.198.27:7788/board/findByCategoryLimitOffset/'+this.category+'/'+offset)
         			.then(response=>(this.info= response.data))
 	                .catch(error=>{
 	                    console.log(error);
@@ -276,7 +276,7 @@
             	
             	findByAreaInMethods(areaNum){
             		axios
-            		.get('http://127.0.0.1:7788/board/findByAreaTotalCount/'+this.areaNum)
+            		.get('http://3.37.198.27:7788/board/findByAreaTotalCount/'+this.areaNum)
             			.then(response=>{this.totalListItemCount= response.data;
             			 this.initUI();
             			 })
@@ -288,7 +288,7 @@
             		
             		offset=(this.currentPageIndex-1)*this.listRowCount;
             		axios
-            			.get('http://127.0.0.1:7788/board/findByAreaLimitOffset/'+this.areaNum+'/'+offset)
+            			.get('http://3.37.198.27:7788/board/findByAreaLimitOffset/'+this.areaNum+'/'+offset)
             			.then(response=>(this.info= response.data))
             			.catch(error=>{
             				console.log(error);
@@ -300,7 +300,7 @@
             	findById(keyword){
             		
             		axios
-            		.get('http://127.0.0.1:7788/board/findByIdTotalCount/'+this.keyword)
+            		.get('http://3.37.198.27:7788/board/findByIdTotalCount/'+this.keyword)
             			.then(response=>{this.totalListItemCount= response.data;
             			 this.initUI();
             			 })
@@ -312,7 +312,7 @@
             		
             		offset=(this.currentPageIndex-1)*this.listRowCount;
             		axios
-        			.get('http://127.0.0.1:7788/board/findByIdLimitOffset/'+this.keyword+'/'+offset)
+        			.get('http://3.37.198.27:7788/board/findByIdLimitOffset/'+this.keyword+'/'+offset)
         			.then(response=>(this.info= response.data))
 	                .catch(error=>{
 	                    console.log(error);
@@ -324,7 +324,7 @@
             	findByTitle(keyword){
             		
             		axios
-            		.get('http://127.0.0.1:7788/board/findByTitleTotalCount/'+this.keyword)
+            		.get('http://3.37.198.27:7788/board/findByTitleTotalCount/'+this.keyword)
             			.then(response=>{this.totalListItemCount= response.data;
             			 this.initUI();
             			 })
@@ -336,7 +336,7 @@
             		
             		offset=(this.currentPageIndex-1)*this.listRowCount;
             		axios
-        			.get('http://127.0.0.1:7788/board/findByTitleLimitOffset/'+this.keyword+'/'+offset)
+        			.get('http://3.37.198.27:7788/board/findByTitleLimitOffset/'+this.keyword+'/'+offset)
         			.then(response=>(this.info= response.data))
 	                .catch(error=>{
 	                    console.log(error);
@@ -347,7 +347,7 @@
             	
             	findByContent(keyword){
             		axios
-            		.get('http://127.0.0.1:7788/board/findByContentTotalCount/'+this.keyword)
+            		.get('http://3.37.198.27:7788/board/findByContentTotalCount/'+this.keyword)
             			.then(response=>{this.totalListItemCount= response.data;
             			 this.initUI();
             			 })
@@ -359,7 +359,7 @@
             		
             		offset=(this.currentPageIndex-1)*this.listRowCount;
             		axios
-        			.get('http://127.0.0.1:7788/board/findByContentLimitOffset/'+this.keyword+'/'+offset)
+        			.get('http://3.37.198.27:7788/board/findByContentLimitOffset/'+this.keyword+'/'+offset)
         			.then(response=>(this.info= response.data))
 	                .catch(error=>{
 	                    console.log(error);
@@ -394,7 +394,7 @@
             	
             	initPagination(){
             		axios
-            		.get('http://127.0.0.1:7788/board/getBoardTotalCount')
+            		.get('http://3.37.198.27:7788/board/getBoardTotalCount')
             			.then(response=>{this.totalListItemCount= response.data;
             			 this.initUI();
             			 })
@@ -407,7 +407,7 @@
 
             	findByAreaInMethods(areaNum){
             		axios
-            			.get('http://127.0.0.1:7788/board/findByArea/'+this.areaNum)
+            			.get('http://3.37.198.27:7788/board/findByArea/'+this.areaNum)
             			.then(response=>(this.info= response.data))
             			.catch(error=>{
             				console.log(error);
@@ -456,7 +456,7 @@
             	    
                 	findByArea(areaNum){
                 		axios
-                			.get('http://127.0.0.1:7788/board/findByArea/'+this.areaNum)
+                			.get('http://3.37.198.27:7788/board/findByArea/'+this.areaNum)
                 			.then(respone=>(this.info= response.data))
                 			.catch(error=>{
                 				console.log(error);

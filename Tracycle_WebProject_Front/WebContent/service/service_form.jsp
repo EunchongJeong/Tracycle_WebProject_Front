@@ -181,7 +181,7 @@
   		
   		mounted() {
   			axios
-			.get('http://127.0.0.1:7788/board/getAllArea',{
+			.get('http://3.37.198.27:7788/board/getAllArea',{
  	  			headers : {
  	  				"jwt-auth-token":storage.getItem("jwt-auth-token")
  	  			}
@@ -231,14 +231,14 @@
 					for(var key of formData.entries()) {
 						console.log(key[0]+', '+key[1]);
 					}
-					axios.post('http://127.0.0.1:8085/service', formData)
+					axios.post('http://3.37.198.27:8085/service', formData)
 					.then(response=>{
 						this.result= response.data;
 						if(this.result.length > 0) {
 							this.url = this.result[0][5];
 							this.telephone = this.result[0][6];
 						}
-						this.image = "http://127.0.0.1:8085/static/"+this.user.userId+".jpg?a=" + Math.random();
+						this.image = "http://3.37.198.27:8085/static/"+this.user.userId+".jpg?a=" + Math.random();
 						
 						console.log(this.result);
 					}).catch(error=>{

@@ -140,7 +140,7 @@
 		
 		mounted(){
 			axios
-			.get('http://127.0.0.1:7788/board/getAllArea',{
+			.get('http://3.37.198.27:7788/board/getAllArea',{
  	  			headers : {
  	  				"jwt-auth-token":storage.getItem("jwt-auth-token")
  	  			}
@@ -153,7 +153,7 @@
 			})
 			.finally(()=>this.loading = false),
 			axios
-			.get('http://127.0.0.1:7788/board/getAllCategory',{
+			.get('http://3.37.198.27:7788/board/getAllCategory',{
  	  			headers : {
  	  				"jwt-auth-token":storage.getItem("jwt-auth-token")
  	  			}
@@ -166,7 +166,7 @@
 			})
 			.finally(()=>this.loading = false),
 			axios
-			.get('http://127.0.0.1:7788/board/getBoard/'+${param.boardId}+'/noadd',
+			.get('http://3.37.198.27:7788/board/getBoard/'+${param.boardId}+'/noadd',
 					{
  	  			headers : {
  	  				"jwt-auth-token":storage.getItem("jwt-auth-token")
@@ -260,7 +260,7 @@
 				if(this.mainFile.length == 0) { // 사진 없는 경우
 					if(this.validationOnlyText()) {
 						axios
-						.put('http://127.0.0.1:7788/board/updateBoardOnlyText',
+						.put('http://3.37.198.27:7788/board/updateBoardOnlyText',
 							{
 								boardId:${param.boardId},
 								title:this.board.title,
@@ -304,7 +304,7 @@
 							console.log(key[0]+', '+key[1]);
 						}
 						
-						axios.put('http://127.0.0.1:7788/board/updateBoard', formData,
+						axios.put('http://3.37.198.27:7788/board/updateBoard', formData,
 								{headers:{ 'Content-Type': 'multipart/form-data',
 									"jwt-auth-token":storage.getItem("jwt-auth-token") }})
 						.then(response=>{
